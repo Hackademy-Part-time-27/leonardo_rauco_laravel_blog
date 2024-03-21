@@ -14,6 +14,6 @@
         <a  class = "nav-link"href="{{ route('articles')}}">Articoli</a>
 
     </nav>
-<h1>Benvenuto</h1>
+<h1>{{ $title}}</h1>
 </body>
 </html>

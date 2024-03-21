@@ -22,19 +22,26 @@
 
     <h1 class = "title"> Articoli</h1>
     
-    <div> 
-<ul>
+
+<div>
 @if($articles) 
 @foreach($articles as $index => $article)
-    <li><a href="{{ route('article',$index) }}">{{ $article['title'] }}</a></li>
-    @endforeach
-</ul>
+<article class ="card mb-2">
+<div class = "card-body">
+<span>{{$article['category'] }}</span>
+<h5><a href="{{ route('article', $index)}}">{{ $article['title'] }}</a></h5>
+<p>{{ $article['description'] }}</p>
+<div class ="text end">
+<a  class = "stretched-link" href="{{ route('article', $index)}}">ClickHere...</a>
+</div>
+</div>
+</article>
 
+@endforeach
 @else
 <p>Non ci sono articoli</p>
 @endif
-
 </div>
-    </div>
+</div>
 </body>
 </html>
