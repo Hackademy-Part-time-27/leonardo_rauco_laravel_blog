@@ -9,23 +9,12 @@
 </head>
 <body>    
     <div class="container">
-
-    
-    <nav class = "nav">
-        <a class = "nav-link" href="{{ route('welcome')}}">Home</a>
-        <a class = "nav-link" href="{{ route('about-me')}}">Chi sono</a>
-        <a class = "nav-link" href="{{ route('contacts')}}">Contatti</a>
-        <a  class = "nav-link"href="{{ route('articles')}}">Articoli</a>
-        
-    </nav>
-
-
+        <x-navbar />
     <h1 class = "title"> Articoli</h1>
-    
-
 <div>
 @if($articles) 
 @foreach($articles as $index => $article)
+@if($article['visible'])
 <article class ="card mb-2">
 <div class = "card-body">
 <span>{{$article['category'] }}</span>
@@ -36,6 +25,7 @@
 </div>
 </div>
 </article>
+@endif
 
 @endforeach
 @else

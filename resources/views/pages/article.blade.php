@@ -10,14 +10,7 @@
 <body>
 <div class="container">
 
-    
-<nav class = "nav">
-    <a class = "nav-link" href="{{ route('welcome')}}">Home</a>
-    <a class = "nav-link" href="{{ route('about-me')}}">Chi sono</a>
-    <a class = "nav-link" href="{{ route('contacts')}}">Contatti</a>
-    <a  class = "nav-link"href="{{ route('articles')}}">Articoli</a>
-    
-</nav>
+<x-navbar />
 
 <div class="mt5">
 <h1 class = "title">{{ $article['title'] }}</h1>
