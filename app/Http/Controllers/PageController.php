@@ -20,9 +20,7 @@ class PageController extends Controller
         $title = config('app.name');
         return view ('welcome', compact ('title'));
     }
-    public function contacts(){
-        return view('pages.contacts');
-    }
+   
 
     public function aboutMe(){
         return view('pages.about-me', [
@@ -39,7 +37,7 @@ public function article($article){
     if ( ! $article['visible']){
         abort(404);
 
-    }
+    } 
 return view('pages.article', ['article'=> $article]);
 }
 }

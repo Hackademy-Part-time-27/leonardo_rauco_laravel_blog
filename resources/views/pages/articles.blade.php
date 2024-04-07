@@ -11,7 +11,7 @@
 
 <x-card 
 :category="$article['category']" 
-:index="$index"
+:article-index="$index"
 :title="$article['title']"
 :description="$article ['description']"
 :route="route('article',$index)"
