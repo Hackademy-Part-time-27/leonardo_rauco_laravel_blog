@@ -1,27 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
+use App\Models\Article;
 class PageController extends Controller
 
 {
-    public $articles;
-    public function __construct(){
-        $this->articles = [
-            ['title' => 'Euro.sport', 'category'=>'Calcio', 'description'=>'Vedi tutte le novità qui in basso', 'visible'=>true],
-            ['title' => 'Euro.sport', 'category'=>'Basket','description'=>'Vedi tutte le novità qui in basso','visible'=>false],
-            ['title' => 'Euro.sport', 'category'=>'Rugby', 'description'=>'Vedi tutte le novità qui in basso', 'visible'=>true],
-        ];    
-
-    }
-    public function welcome(){
+    public function welcome()
+    {
         $title = config('app.name');
+
         return view ('welcome', compact ('title'));
     }
-   
-
     public function aboutMe(){
         return view('pages.about-me', [
             'title' => 'Leonardo',
@@ -29,15 +19,12 @@ class PageController extends Controller
         ]);
     }
 public function articles(){
+    $articles = Article::where('visible',true)->get();
     
-    return view('pages.articles',['articles' => $this->articles]); 
+    return view('pages.articles',['articles' => $articles]); 
 } 
-public function article($article){
-    $article = $this->articles[$article];
-    if ( ! $article['visible']){
-        abort(404);
-
-    } 
+public function article( Article $article){
 return view('pages.article', ['article'=> $article]);
 }
+
 }
