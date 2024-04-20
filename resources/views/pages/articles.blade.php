@@ -1,8 +1,6 @@
 <x-layout title="Articoli">
     <h1 class = "title"> Articoli</h1>
-    <div>
-        <x-test />
-    </div>
+    
 
 <div>
 @if($articles) 
