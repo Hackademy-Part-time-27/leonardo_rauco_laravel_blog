@@ -7,14 +7,14 @@ use App\Models\Article;
 class ArticleController extends Controller
 
 {
-
+  
 public function index(){
-    return view('articles.index',['articles'=>Article::all()]);
+    return view('articles.index',['articles'=>Article::orderBy('id','DESC')->get()]);
 }
 
 
     public function create(){
-    return view('articles.create'); 
+    return view('articles.create',['categories' => \App\Models\Category::all()]); 
     }
 
     public function store(Request $request){

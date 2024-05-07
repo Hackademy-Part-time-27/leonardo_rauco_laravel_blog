@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreArticleRequest extends FormRequest
+class StoreCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,8 +14,6 @@ class StoreArticleRequest extends FormRequest
         return true;
     }
 
-
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,18 +22,15 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:150',
-            'category_id' => 'required',
-            'description' => 'required|max:255',
-            
+            'name' => 'required|max:50'
         ];
     }
 
-    public function messages():array{
-        return[
-            'title.required'=>'il campo TITOLO è obbligatorio',
-            'title.max'=> 'non più lungo di :max caratteri.',
+    public function messages(): array
+    {
+        return [
+        'name.required' => 'il campo name è obbligatorio',
+        'name.max' => 'il campo Nome non deve essre lungo più di :max caratteri.',
         ];
     }
 }
-

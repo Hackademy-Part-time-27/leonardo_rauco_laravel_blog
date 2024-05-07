@@ -9,8 +9,20 @@ class PageController extends Controller
     public function welcome()
     {
         $title = config('app.name');
+       //$articles = Article::paginate(10);
+        //$articles = Article::orderBy('id')->get();
+        //$articles = Article::orderBy('id', 'DESC' )->get();
+       $articles = Article::orderBy('created_at', 'DESC' )->take(10)->get();
+        //$articles = Article::where('title', 'LIKE','xarticolo%' )->get();
+        //$person = Person::where('age', '>' , 50 )->get();
 
-        return view ('welcome', compact ('title'));
+
+       //$user = App\Models\User::where('email','leo.rauco16@gmail.com')->first;
+       //$user = App\Models\User::where('email','leo.rauco16@gmail.com')->firstOrfail;
+       //dd($user);
+      
+
+        return view ('welcome', compact ('title', 'articles'));
     }
     public function aboutMe(){
         return view('pages.about-me', [

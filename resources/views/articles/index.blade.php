@@ -23,7 +23,11 @@
                 <tr>
                     <td>{{ $article->id }}</td>
                     <td>{{ $article->title }}</td>
-                    <td>{{ $article->category }}</td>
+                    @if(! $article->category_id)
+                    <td></td>
+                    @else
+                    <td>{{ $article->category->name }}</td>
+                    @endif
                     <td>
                         @if($article->visible)
                         <span class="badge text-bg-success">Si</span>
