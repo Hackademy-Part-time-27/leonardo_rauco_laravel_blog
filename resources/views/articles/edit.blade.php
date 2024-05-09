@@ -1,18 +1,21 @@
-<x-layout title="Crea Articolo">
+<x-layout title="Modifica Articolo">
  <div class="row">
     <div class="col-lg-6 mx-auto">
       <a href="{{ route('articles.index') }}" class="small text-secondary">Indietro</a>
-      <h1>Crea Articolo</h1>
+      <h1>Modifica Articolo</h1>
+
 <x-success/>
 
   <div class="mt-5">
-    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('articles.update', $article) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="row g-3">
             <div class="col-12">
 <label for="title">Titolo</label>
 <input type="text" name="title" id="title"
- class="form-control @error('title') is-invalid @enderror" maxlength="150" value="{{ old('title') }}">
+ class="form-control @error('title') is-invalid @enderror" maxlength="150"
+  value="{{ old('title' , $article->title) }}">
 @error('title') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
             </div>
 
@@ -20,9 +23,11 @@
 <label for="category_id">Categoria</label>
 <select name="category_id" id="category_id" class="form-control">
   @foreach($categories as $category)
-<option value="{{ $category->id }}">{{ $category->name }}
+<option
+ value="{{ $category->id }}">
+ @selected($category->id == $article->category_id)
+ {{ $category->name }} </option>
   @endforeach
-
 
 </select>
 @error('category_id') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror

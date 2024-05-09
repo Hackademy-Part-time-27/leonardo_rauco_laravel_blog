@@ -9,7 +9,7 @@
     </div>
     </div>
     
-    <x-success/>
+    <x-warning/>
 
     <table class="table table-bordered mt-5">
     <thead>
