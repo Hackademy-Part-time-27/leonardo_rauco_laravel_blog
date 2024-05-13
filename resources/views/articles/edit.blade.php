@@ -20,18 +20,24 @@
             </div>
 
             <div class="col-12">
-<label for="category_id">Categoria</label>
-<select name="category_id" id="category_id" class="form-control">
+<label for="categories">Categoria</label>
   @foreach($categories as $category)
-<option
- value="{{ $category->id }}">
- @selected($category->id == $article->category_id)
- {{ $category->name }} </option>
+  <div class="form-check">
+  <input class="form-check-input" name="categories[]" type="checkbox" value="{{ $category->id }}">
+  <label class="form-check-label" for="flexCheckDefault">
+  {{ $category->name }}
+  </label>
+</div>
   @endforeach
-
-</select>
-@error('category_id') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
+@error('categories') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
         </div>
+
+        <div class="col-12">
+<label for="title">Descrizione breve</label>
+<textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+ rows="5" maxlength="255">{{ old('description') }}</textarea>
+@error('description') <span class="text-danger small fw-bold">{{ $message }}</span> @enderror
+</div>
 
         <div class="col-12">
 <label for="title">Descrizione breve</label>

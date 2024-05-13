@@ -23,11 +23,14 @@
                 <tr>
                     <td>{{ $article->id }}</td>
                     <td>{{ $article->title }}</td>
-                    @if(! $article->category_id)
-                    <td></td>
-                    @else
-                    <td>{{ $article->category->name }}</td>
-                    @endif
+                    <td>
+                        @foreach($article->categories as $category)
+                        <span class="me-3">{{ $category->name }}</span>
+                        @endforeach
+                    </td>
+        
+                    
+        
                     <td>
                         @if($article->visible)
                         <span class="badge text-bg-success">Si</span>
@@ -35,8 +38,8 @@
                         <span class="badge text-bg-danger">No</span>
                         @endif
                     </td>
-                    <td>
-                        <td calss="text-end">
+                    
+                    <td calss="text-end">
                         <a href="{{ route('articles.edit',$article) }}" class="btn btn-sm btn-secondary">modifica</a>
                         <form  class="d-inline ms-2" action="{{ route('articles.destroy', $article) }}" method="POST">
                             @csrf 
@@ -45,7 +48,7 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
+        
 
             </tbody>
         </table>

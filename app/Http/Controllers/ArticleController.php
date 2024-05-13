@@ -24,6 +24,8 @@ public function index(){
     public function store(Request $request){
 
      $article = Article::create(array_merge($request->all(), ['user_id' => auth()->user()->id ]));
+     $article->categories()->attach($request->categories);
+
     
     if($request->hasFile('image') && $request->file('image')->isValid()){
         $extension = $request->file('image')->extension();

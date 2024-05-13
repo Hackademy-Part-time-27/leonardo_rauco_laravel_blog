@@ -24,4 +24,4 @@
         ....
     </script>
 </x-slot>
-</x-layout>
+</x-layout> 
